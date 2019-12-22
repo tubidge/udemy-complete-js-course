@@ -48,7 +48,7 @@
 // var lastName = prompt('What is his last name?');
 // console.log(firstName + ' ' + lastName);
 
-/***************** 
+/*****************
 * Basic Operators
 */
 
@@ -77,19 +77,45 @@
 * Operator precedence
 */
 
-var now = 2018;
-var yearJohn = 2001;
-var fullAge = 18;
+// var now = 2018;
+// var yearJohn = 2001;
+// var fullAge = 18;
 
-var isFullAge = now - yearJohn >= fullAge;
-console.log(isFullAge);
+// var isFullAge = now - yearJohn >= fullAge;
+// console.log(isFullAge);
 
-var x, y;
-x = y = (3 + 5) * 3;
+// var x, y;
+// x = y = (3 + 5) * 3;
 
-x *= 2;
-console.log(x);
-x += 10;
-console.log(x);
-x--;
-console.log(x);
+// x *= 2;
+// console.log(x);
+// x += 10;
+// console.log(x);
+// x--;
+// console.log(x);
+
+
+
+/*******************
+ * Coding Challenge 1
+*/
+
+// var markMass, johnMass, markHeight, johnHeight;
+// markMass = 90;
+// markHeight = 1.8;
+// johnMass = 100;
+// johnHeight = 1.9;
+
+// var markBMI, johnBMI;
+// // markBMI = markMass / (markHeight * markHeight);
+// // johnBMI = johnMass / (johnHeight * johnHeight);
+// markBMI = calcBMI(markMass, markHeight);
+// johnBMI = calcBMI(johnMass, johnHeight);
+
+// console.log(markBMI, johnBMI);
+
+
+// function calcBMI(mass, height) {
+//     height *= height;
+//     return mass / (height);
+// };
