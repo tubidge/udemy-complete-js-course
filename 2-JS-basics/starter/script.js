@@ -52,7 +52,17 @@ console.log(firstName + ' ' + lastName);
 * Basic Operators
 */
 
-var year = 2020;
-var yearJohn = year - 28;
-var yearMark = year - 33;
+var year, yearJohn, yearMark;
+year = 2020;
+ageJohn = 28;
+ageMark = 33;
+
+// Math Operators
+yearJohn = year - ageJohn;
+yearMark = year - ageMark;
 console.log(yearJohn);
+
+
+// Logical Operators
+var johnOlder = ageJohn > ageMark;
+console.log(johnOlder);
