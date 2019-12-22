@@ -26,43 +26,70 @@
 * Variables Mutation and Type Coercion
 *******************/
 
-var firstName = 'John';
-var age = 28;
+// var firstName = 'John';
+// var age = 28;
 
-console.log(firstName + ' ' + age);
+// console.log(firstName + ' ' + age);
 
-var job, isMarried;
-job = 'Teacher';
-isMarried = false;
+// var job, isMarried;
+// job = 'Teacher';
+// isMarried = false;
 
-console.log(firstName + ' is a ' + age + ' year old '
-    + job + '. Is he married? ' + isMarried);
+// console.log(firstName + ' is a ' + age + ' year old '
+//     + job + '. Is he married? ' + isMarried);
 
 // Variable mutation
-age = 'twenty eight';
-job = 'driver';
+// age = 'twenty eight';
+// job = 'driver';
 
-alert(firstName + ' is a ' + age + ' year old '
-    + job + '. Is he married? ' + isMarried);
+// alert(firstName + ' is a ' + age + ' year old '
+//     + job + '. Is he married? ' + isMarried);
 
-var lastName = prompt('What is his last name?');
-console.log(firstName + ' ' + lastName);
+// var lastName = prompt('What is his last name?');
+// console.log(firstName + ' ' + lastName);
 
 /***************** 
 * Basic Operators
 */
 
-var year, yearJohn, yearMark;
-year = 2020;
-ageJohn = 28;
-ageMark = 33;
+// var year, yearJohn, yearMark;
+// year = 2020;
+// ageJohn = 28;
+// ageMark = 33;
 
-// Math Operators
-yearJohn = year - ageJohn;
-yearMark = year - ageMark;
-console.log(yearJohn);
+// // Math Operators
+// yearJohn = year - ageJohn;
+// yearMark = year - ageMark;
+// console.log(yearJohn);
 
 
-// Logical Operators
-var johnOlder = ageJohn > ageMark;
-console.log(johnOlder);
+// // Logical Operators
+// var johnOlder = ageJohn > ageMark;
+// console.log(johnOlder);
+
+// // Typeof Operator
+// console.log(typeof johnOlder);
+// console.log(typeof ageJohn);
+
+
+
+/********************
+* Operator precedence
+*/
+
+var now = 2018;
+var yearJohn = 2001;
+var fullAge = 18;
+
+var isFullAge = now - yearJohn >= fullAge;
+console.log(isFullAge);
+
+var x, y;
+x = y = (3 + 5) * 3;
+
+x *= 2;
+console.log(x);
+x += 10;
+console.log(x);
+x--;
+console.log(x);
