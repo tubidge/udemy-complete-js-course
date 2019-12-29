@@ -122,54 +122,67 @@
 
 
 
-/************************
- * If / Else Statements
+// /************************
+//  * If / Else Statements
+//  */
+
+// var firstName = 'John';
+// var civilStatus = 'single';
+
+// if (civilStatus === 'married') {
+//     console.log(firstName + ' is married!');
+// } else {
+//     console.log(firstName + ' is single and ready to mingle!');
+// };
+
+
+// var isMarried = true;
+// if (isMarried) {
+//     console.log(firstName + ' is married!');
+// } else {
+//     console.log(firstName + ' is single and ready to mingle!');
+// };
+
+// // Coding challenge 1 redo
+
+// var markMass, johnMass, markHeight, johnHeight;
+// markMass = 90;
+// markHeight = 1.8;
+// johnMass = 100;
+// johnHeight = 1.9;
+
+// var markBMI, johnBMI;
+// // markBMI = markMass / (markHeight * markHeight);
+// // johnBMI = johnMass / (johnHeight * johnHeight);
+// markBMI = calcBMI(markMass, markHeight);
+// johnBMI = calcBMI(johnMass, johnHeight);
+
+// function calcBMI(mass, height) {
+//     height *= height;
+//     return mass / (height);
+// };
+// // console.log(markBMI, johnBMI);
+
+// if (markBMI > johnBMI) {
+//     console.log('Mark\'s BMI is higher than John\'s.');
+// } else {
+//     console.log('John\'s BMI is higher than Mark\'s.');
+// };
+
+
+/********************
+ * Boolean Logic
  */
 
 var firstName = 'John';
-var civilStatus = 'single';
+var age = prompt('How old is John?');
 
-if (civilStatus === 'married') {
-    console.log(firstName + ' is married!');
+if (age < 13) {
+    console.log(firstName + ' is a boy.');
+} else if (age >= 13 && age < 20) {
+    console.log(firstName + ' is a teenager.');
+} else if (age >= 20 && age < 30) {
+    console.log(firstName + ' is a young man.')
 } else {
-    console.log(firstName + ' is single and ready to mingle!');
+    console.log(firstName + ' is a man.');
 };
-
-
-var isMarried = true;
-if (isMarried) {
-    console.log(firstName + ' is married!');
-} else {
-    console.log(firstName + ' is single and ready to mingle!');
-};
-
-// Coding challenge 1 redo
-
-var markMass, johnMass, markHeight, johnHeight;
-markMass = 90;
-markHeight = 1.8;
-johnMass = 100;
-johnHeight = 1.9;
-
-var markBMI, johnBMI;
-// markBMI = markMass / (markHeight * markHeight);
-// johnBMI = johnMass / (johnHeight * johnHeight);
-markBMI = calcBMI(markMass, markHeight);
-johnBMI = calcBMI(johnMass, johnHeight);
-
-function calcBMI(mass, height) {
-    height *= height;
-    return mass / (height);
-};
-// console.log(markBMI, johnBMI);
-
-if (markBMI > johnBMI) {
-    console.log('Mark\'s BMI is higher than John\'s.');
-} else {
-    console.log('John\'s BMI is higher than Mark\'s.');
-};
-
-
-/**
- * Boolean Logic
- */
