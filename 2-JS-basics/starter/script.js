@@ -188,6 +188,7 @@
 // };
 
 
+
 /********************************************
  * Ternary Operator and Switch Statements
  */
@@ -251,19 +252,61 @@ var age = 29;
  * Truth and Falsy
  */
 
+// var height;
+// height = 23;
 
-var height;
-height = 23;
+// if (height || height === 0) {
+//     console.log('Variable has been defined.');
+// } else {
+//     console.log('Variable has NOT been defined.');
+// }
 
-if (height || height === 0) {
-    console.log('Variable has been defined.');
+
+// // Equality operators
+
+// if (height == '23') {
+//     console.log('The == operator does type coercion.');
+// }
+
+
+var team1 = 'Bulls';
+var team2 = 'Jazz';
+var team3 = 'Suns';
+
+var team1Scores = [12, 80, 76];
+var team2Scores = [12, 80, 76];
+var team3Scores = [12, 80, 76];
+
+function calcAvg(teamName, arr) {
+    var avg = (arr[0] + arr[1] + arr[2]) / arr.length;
+    console.log(teamName + ' Average: ' + avg);
+    return avg;
+};
+
+var team1Avg = calcAvg(team1, team1Scores);
+var team2Avg = calcAvg(team2, team2Scores);
+var team3Avg = calcAvg(team3, team3Scores);
+
+// switch (true) {
+//     case team1Avg > team2Avg:
+//         console.log(team1 + ' wins with the highest average score!');
+//         break;
+//     case team1Avg === team2Avg:
+//         console.log(team1 + ' & ' + team2 + ' have tied!')
+//         break;
+//     default:
+//         console.log(team2 + ' wins with the highest average score!');
+// }   
+
+// team1Avg > team2Avg ? console.log(team1 + ' win with the highest average score!')
+//     : console.log(team2 + ' win with the highest average score!');
+
+if (team1Avg === team2Avg && team1Avg === team3Avg) {
+    console.log(team1 + ', ' + team2 + ', & ' + team3 + ' have tied!');
+} else if (team1Avg > team2Avg && team1Avg > team3Avg) {
+    console.log(team1 + ' win with the highest average score!');
+} else if (team2Avg > team1Avg && team2Avg > team3Avg) {
+    console.log(team2 + ' win with the highest average score!');
 } else {
-    console.log('Variable has NOT been defined.');
-}
-
-
-// Equality operators
-
-if (height == '23') {
-    console.log('The == operator does type coercion.');
-}
+    console.log(team3 + ' win with the highest average score!');
+};
