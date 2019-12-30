@@ -340,28 +340,118 @@ var age = 29;
 
 
 
-/*********************
- * Arrays
+// /*********************
+//  * Arrays
+//  */
+
+// var names = ['Will', 'Jane', 'Oliver'];
+// var years = new Array(1990, 1995, 2005);
+
+// console.log(names[0]);
+
+// names[1] = 'Phil';
+// names[names.length] = 'Sara';
+// names.push('Jane');
+// console.log(names);
+
+// names.unshift('Taylor');
+// console.log(names);
+
+// names.pop();
+// console.log(names);
+
+// console.log(names.indexOf('Phil'));
+
+// var isPresent = names.indexOf('Sara') === -1 ? 'Sara isn\'t here.' : 'Sara is here.';
+
+// console.log(isPresent);
+
+
+/*******************************
+ * Coding Challenge 3
  */
 
-var names = ['Will', 'Jane', 'Oliver'];
-var years = new Array(1990, 1995, 2005);
+/*
+Bills: $124, $48, $268
+Tip amounts: 20% if under $50, 15% if $50 - $200, 10% if over $200
+Return and array with each tip amount, 
+and another array with the tip plus bill amounts. 
+*/
 
-console.log(names[0]);
+// var billAmts = [124, 48, 268]
+// var tipAmts = [];
+// var totals = [];
 
-names[1] = 'Phil';
-names[names.length] = 'Sara';
-names.push('Jane');
-console.log(names);
+// function calcTip(bill) {
+//     switch (true) {
+//         case bill < 50:
+//             return tipAmts.push(bill * 0.2);
+//         case bill > 200:
+//             return tipAmts.push(bill * 0.1);
+//         default:
+//             return tipAmts.push(bill * 0.15);
+//     };
+// };
 
-names.unshift('Taylor');
-console.log(names);
+// calcTip(billAmts[0]);
+// calcTip(billAmts[1]);
+// calcTip(billAmts[2]);
+// console.log(tipAmts);
 
-names.pop();
-console.log(names);
+// function calcTotal(bill, tip) {
+//     totals.push(bill + tip);
+// };
 
-console.log(names.indexOf('Phil'));
+// calcTotal(billAmts[0], tipAmts[0]);
+// calcTotal(billAmts[1], tipAmts[1]);
+// calcTotal(billAmts[2], tipAmts[2]);
+// console.log(totals);
 
-var isPresent = names.indexOf('Sara') === -1 ? 'Sara isn\'t here.' : 'Sara is here.';
+// Now dry it up
 
-console.log(isPresent);
+// function calcTotal(bill) {
+//     var tip;
+//     switch (true) {
+//         case bill < 50:
+//             tip = bill * 0.2;
+//             tipAmts.push(tip);
+//             return totals.push(bill + tip);
+//         case bill > 200:
+//             tip = bill * 0.1;
+//             tipAmts.push(tip);
+//             return totals.push(bill + tip);
+//         default:
+//             tip = bill * 0.15;
+//             tipAmts.push(tip);
+//             return totals.push(bill + tip);
+//     };
+// };
+
+// calcTotal(billAmts[0]);
+// calcTotal(billAmts[1]);
+// calcTotal(billAmts[2]);
+// console.log(tipAmts, totals);
+
+
+/************************
+ * Objects and Properties
+ */
+
+//  Object Literal
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: '1990',
+    family: ['Mom', 'Dad', 'Sis'],
+    job: 'Developer',
+    isMarried: false,
+};
+
+console.log(john['birthYear'], john.lastName);
+
+// new object syntax
+var jane = new Object();
+jane.name = 'Jane';
+jane.birthYear = 2000;
+jane.lastName = 'Smith';
+console.log(jane);
