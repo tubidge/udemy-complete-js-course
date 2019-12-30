@@ -344,4 +344,24 @@ var age = 29;
  * Arrays
  */
 
+var names = ['Will', 'Jane', 'Oliver'];
+var years = new Array(1990, 1995, 2005);
 
+console.log(names[0]);
+
+names[1] = 'Phil';
+names[names.length] = 'Sara';
+names.push('Jane');
+console.log(names);
+
+names.unshift('Taylor');
+console.log(names);
+
+names.pop();
+console.log(names);
+
+console.log(names.indexOf('Phil'));
+
+var isPresent = names.indexOf('Sara') === -1 ? 'Sara isn\'t here.' : 'Sara is here.';
+
+console.log(isPresent);
