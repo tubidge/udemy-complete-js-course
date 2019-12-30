@@ -269,44 +269,79 @@ var age = 29;
 // }
 
 
-var team1 = 'Bulls';
-var team2 = 'Jazz';
-var team3 = 'Suns';
+// var team1 = 'Bulls';
+// var team2 = 'Jazz';
+// var team3 = 'Suns';
 
-var team1Scores = [12, 80, 76];
-var team2Scores = [12, 80, 76];
-var team3Scores = [12, 80, 76];
+// var team1Scores = [12, 80, 76];
+// var team2Scores = [12, 80, 76];
+// var team3Scores = [12, 80, 76];
 
-function calcAvg(teamName, arr) {
-    var avg = (arr[0] + arr[1] + arr[2]) / arr.length;
-    console.log(teamName + ' Average: ' + avg);
-    return avg;
-};
+// function calcAvg(teamName, arr) {
+//     var avg = (arr[0] + arr[1] + arr[2]) / arr.length;
+//     console.log(teamName + ' Average: ' + avg);
+//     return avg;
+// };
 
-var team1Avg = calcAvg(team1, team1Scores);
-var team2Avg = calcAvg(team2, team2Scores);
-var team3Avg = calcAvg(team3, team3Scores);
+// var team1Avg = calcAvg(team1, team1Scores);
+// var team2Avg = calcAvg(team2, team2Scores);
+// var team3Avg = calcAvg(team3, team3Scores);
 
-// switch (true) {
-//     case team1Avg > team2Avg:
-//         console.log(team1 + ' wins with the highest average score!');
-//         break;
-//     case team1Avg === team2Avg:
-//         console.log(team1 + ' & ' + team2 + ' have tied!')
-//         break;
-//     default:
-//         console.log(team2 + ' wins with the highest average score!');
-// }   
+// // switch (true) {
+// //     case team1Avg > team2Avg:
+// //         console.log(team1 + ' wins with the highest average score!');
+// //         break;
+// //     case team1Avg === team2Avg:
+// //         console.log(team1 + ' & ' + team2 + ' have tied!')
+// //         break;
+// //     default:
+// //         console.log(team2 + ' wins with the highest average score!');
+// // }   
 
-// team1Avg > team2Avg ? console.log(team1 + ' win with the highest average score!')
-//     : console.log(team2 + ' win with the highest average score!');
+// // team1Avg > team2Avg ? console.log(team1 + ' win with the highest average score!')
+// //     : console.log(team2 + ' win with the highest average score!');
 
-if (team1Avg === team2Avg && team1Avg === team3Avg) {
-    console.log(team1 + ', ' + team2 + ', & ' + team3 + ' have tied!');
-} else if (team1Avg > team2Avg && team1Avg > team3Avg) {
-    console.log(team1 + ' win with the highest average score!');
-} else if (team2Avg > team1Avg && team2Avg > team3Avg) {
-    console.log(team2 + ' win with the highest average score!');
-} else {
-    console.log(team3 + ' win with the highest average score!');
-};
+// if (team1Avg === team2Avg && team1Avg === team3Avg) {
+//     console.log(team1 + ', ' + team2 + ', & ' + team3 + ' have tied!');
+// } else if (team1Avg > team2Avg && team1Avg > team3Avg) {
+//     console.log(team1 + ' win with the highest average score!');
+// } else if (team2Avg > team1Avg && team2Avg > team3Avg) {
+//     console.log(team2 + ' win with the highest average score!');
+// } else {
+//     console.log(team3 + ' win with the highest average score!');
+// };
+
+
+
+/*************************************
+ * Function Statements and Expressions
+ */
+
+// //  Function Declaration
+// function wdyd(job, firstName) {}
+
+// //  Function Expression
+// var wdyd = function (job, firstName) {
+//     switch (job) {
+//         case 'teacher':
+//             return firstName + ' teaches kids how to code.';
+//         case 'driver':
+//             return firstName + ' drives for Lyft.';
+//         case 'designer':
+//             return firstName + ' designs websites.';
+//         default:
+//             return firstName + ' does something else.';
+//     };
+// };
+
+// console.log(wdyd('designer', 'John'));
+// console.log(wdyd('driver', 'Keith'));
+// console.log(wdyd('drug dealer', 'Mary'));
+
+
+
+/*********************
+ * Arrays
+ */
+
+
