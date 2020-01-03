@@ -481,33 +481,102 @@ and another array with the tip plus bill amounts.
  * Coding Challenge 4
  */
 
-var john = {
-    firstName: 'John',
-    lastName: 'Smith',
-    mass: 90,
-    height: 2,
-    calcBMI: function () {
-        this.bmi = this.mass / (this.height * this.height)
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Smith',
+//     mass: 90,
+//     height: 2,
+//     calcBMI: function () {
+//         this.bmi = this.mass / (this.height * this.height)
+//     }
+// };
+
+// var mark = {
+//     firstName: 'Mark',
+//     lastName: 'Hernandez',
+//     mass: 90,
+//     height: 2,
+//     calcBMI: function () {
+//         this.bmi = this.mass / (this.height * this.height)
+//     }
+// };
+
+// john.calcBMI();
+// mark.calcBMI();
+
+// if (john.bmi > mark.bmi) {
+//     console.log(john.firstName + ' has a higher BMI.');
+// } else if (john.bmi < mark.bmi) {
+//     console.log(mark.firstName + ' has a higher BMI.');
+// } else {
+//     console.log(john.firstName + ' & ' + mark.firstName + ' have the same BMI.')
+// };
+
+
+/***************************
+ * Loops and Iteration
+ */
+
+// for (var i = 0; i < 10; i++) {
+//     console.log(i);
+// };
+
+// var john = ['John', 'Smith', 1990, 'designer', false];
+// for (var i = 0; i < john.length; i++) {
+//     console.log(john[i]);
+// };
+
+// var i = 0;
+// while (i < john.length) {
+//     console.log(john[i]);
+//     i++;
+// }
+
+// Continue and Break Statementes
+
+// var john = ['John', 'Smith', 1990, 'designer', false, 'blue'];
+// for (var i = 0; i < john.length; i++) {
+//     if (typeof john[i] !== 'string') break;
+//     console.log(john[i]);
+// };
+
+// for (var i = john.length - 1; i >= 0; i--) {
+//     console.log(john[i]);
+// };
+
+
+/*******************************
+ * Coding Challenge 4
+ */
+
+/*
+Bills: $124, $48, $268, $180, $42
+Tip amounts: 20% if under $50, 15% if $50 - $200, 10% if over $200
+Return and array with each tip amount,
+and another array with the tip plus bill amounts.
+*/
+
+var tipObj = {
+    bills: [124, 48, 268, 180, 42],
+    tips: [],
+    totals: [],
+    tipCalc: function () {
+        for (var i = 0; i < this.bills.length; i++) {
+            var bill = this.bills[i];
+            var tip = 0;
+            if (bill < 50) {
+                tip = bill * .2;
+            } else if (bill > 200) {
+                tip = bill * .1;
+            } else {
+                tip = bill * .15;
+            };
+            this.tips.push(tip);
+            this.totals.push(tip + bill)
+        }
     }
 };
 
-var mark = {
-    firstName: 'Mark',
-    lastName: 'Hernandez',
-    mass: 90,
-    height: 2,
-    calcBMI: function () {
-        this.bmi = this.mass / (this.height * this.height)
-    }
-};
+tipObj.tipCalc();
+console.log(tipObj.tips, tipObj.totals);
 
-john.calcBMI();
-mark.calcBMI();
-
-if (john.bmi > mark.bmi) {
-    console.log(john.firstName + ' has a higher BMI.');
-} else if (john.bmi < mark.bmi) {
-    console.log(mark.firstName + ' has a higher BMI.');
-} else {
-    console.log(john.firstName + ' & ' + mark.firstName + ' have the same BMI.')
-};
