@@ -563,7 +563,7 @@ var tipObj = {
     tipCalc: function () {
         for (var i = 0; i < this.bills.length; i++) {
             var bill = this.bills[i];
-            var tip = 0;
+            var tip;
             if (bill < 50) {
                 tip = bill * .2;
             } else if (bill > 200) {
