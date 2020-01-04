@@ -556,7 +556,7 @@ Return and array with each tip amount,
 and another array with the tip plus bill amounts.
 */
 
-var tipObj = {
+var john = {
     bills: [124, 48, 268, 180, 42],
     tips: [],
     totals: [],
@@ -577,6 +577,47 @@ var tipObj = {
     }
 };
 
-tipObj.tipCalc();
-console.log(tipObj.tips, tipObj.totals);
+john.tipCalc();
+// console.log(john.tips, john.totals);
+
+var mark = {
+    bills: [77, 275, 110, 45],
+    tips: [],
+    totals: [],
+    tipCalc: function () {
+        for (var i = 0; i < this.bills.length; i++) {
+            var bill = this.bills[i];
+            var tip;
+            if (bill < 100) {
+                tip = bill * .2;
+            } else if (bill > 300) {
+                tip = bill * .25;
+            } else {
+                tip = bill * .1;
+            };
+            this.tips.push(tip);
+            this.totals.push(tip + bill)
+        }
+    }
+};
+
+mark.tipCalc();
+// console.log(mark.tips, mark.totals);
+
+function tipAvg(arr) {
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++) {
+        sum = sum + arr[i];
+        // console.log(sum);
+    };
+    return sum / arr.length;
+};
+
+if (tipAvg(john.tips) > tipAvg(mark.tips)) {
+    console.log('John\'s family tipped more generously.');
+} else if (tipAvg(john.tips) < tipAvg(mark.tips)) {
+    console.log('Mark\'s family tipped more generously.');
+} else {
+    console.log('The families were equally generous.')
+}
 
