@@ -1,13 +1,35 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
 
+// // Function declaration works:
+// calcAge(1984);
+
+// function calcAge(year) {
+//     console.log(2020 - year);
+// };
+
+// // Function expression does not:
+// retirement(2000);
+
+// var retirement = function (year) {
+//     console.log(65 - (2020 - year));
+// };
+
+// retirement(1988);
 
 
+// Variables:
+console.log(age);
+var age = 23;
+console.log(age);
 
+function foo() {
+    var age = 65;
+    console.log(age);
+};
 
-
-
-
+foo();
+console.log(age);
 
 
 
