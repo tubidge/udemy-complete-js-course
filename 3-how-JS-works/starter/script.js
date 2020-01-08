@@ -18,21 +18,18 @@
 // retirement(1988);
 
 
-// Variables:
-console.log(age);
-var age = 23;
-console.log(age);
+// // Variables:
+// console.log(age);
+// var age = 23;
+// console.log(age);
 
-function foo() {
-    var age = 65;
-    console.log(age);
-};
+// function foo() {
+//     var age = 65;
+//     console.log(age);
+// };
 
-foo();
-console.log(age);
-
-
-
+// foo();
+// console.log(age);
 
 
 
@@ -90,10 +87,34 @@ function third() {
 // Lecture: The this keyword
 
 
+// function calcAge(year) {
+//     console.log(2020 - year);
+//     console.log(this);
+// }
+
+// calcAge(1988);
 
 
+var john = {
+    name: 'john',
+    yearOfBirth: 1990,
+    calcAge: function () {
+        console.log(this);
+        console.log(2020 - this.yearOfBirth);
+        function innerFunction() {
+            console.log(this);
+        }
+        innerFunction();
+    }
+};
 
+john.calcAge();
 
+var mike = {
+    name: 'mike',
+    yearOfBirth: 1984,
+}
 
+mike.calcAge = john.calcAge;
 
-
+mike.calcAge();
