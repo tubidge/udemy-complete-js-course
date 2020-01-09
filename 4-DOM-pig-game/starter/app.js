@@ -23,10 +23,8 @@ console.log(x);
 
 document.querySelector('.dice').style.display = 'none';
 
-
-
 document.querySelector('.btn-roll').addEventListener('click', function () {
-    console.log('Button was pressed!');
+    console.log('Roll button was pressed!');
 
     // 1. Generate random number.
     var dice = Math.floor(Math.random() * 6) + 1;
@@ -38,10 +36,14 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     diceDOM.src = 'dice-' + dice + '.png';
 
 
-    // 3. Update round score if roll != 1.
+    // 3. Update round score if roll !== 1.
     if (dice === 1) {
+        // activePlayer = !activePlayer;
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         roundScore = 0;
+        console.log('Shucks, you rolled a 1! Player ' + activePlayer + ', it\'s your turn.');
     } else {
         roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
     }
 });
