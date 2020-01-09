@@ -39,6 +39,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     // 3. Update round score if roll !== 1.
     if (dice === 1) {
         // activePlayer = !activePlayer;
+        document.getElementById('current-' + activePlayer).textContent = '0';
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         roundScore = 0;
         console.log('Shucks, you rolled a 1! Player ' + activePlayer + ', it\'s your turn.');
