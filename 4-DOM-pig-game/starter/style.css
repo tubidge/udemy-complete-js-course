@@ -70,6 +70,10 @@ body {
     margin-bottom: 130px;
 }
 
+.player-score:hover {
+    font-weight: 300;
+}
+
 .active { background-color: #f7f7f7; }
 .active .player-name { font-weight: 300; }
 

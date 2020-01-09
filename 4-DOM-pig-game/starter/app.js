@@ -14,13 +14,34 @@ var scores = [0, 0];
 var roundScore = 0;
 var activePlayer = 0;
 
-var dice = Math.floor(Math.random() * 6) + 1;
-console.log('Dice roll: ' + dice);
 
-document.querySelector('#current-' + activePlayer).textContent = dice;
+// document.querySelector('#current-' + activePlayer).textContent = dice;
 // document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 
 var x = document.querySelector('#score-0').textContent;
 console.log(x);
 
 document.querySelector('.dice').style.display = 'none';
+
+
+
+document.querySelector('.btn-roll').addEventListener('click', function () {
+    console.log('Button was pressed!');
+
+    // 1. Generate random number.
+    var dice = Math.floor(Math.random() * 6) + 1;
+    console.log('Dice roll: ' + dice);
+
+    // 2. Display result.
+    var diceDOM = document.querySelector('.dice')
+    diceDOM.style.display = 'block';
+    diceDOM.src = 'dice-' + dice + '.png';
+
+
+    // 3. Update round score if roll != 1.
+    if (dice === 1) {
+        roundScore = 0;
+    } else {
+        roundScore += dice;
+    }
+});
