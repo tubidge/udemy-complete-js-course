@@ -40,11 +40,13 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     if (dice === 1) {
         // activePlayer = !activePlayer;
         document.getElementById('current-' + activePlayer).textContent = '0';
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         roundScore = 0;
-        console.log('Shucks, you rolled a 1! Player ' + activePlayer + ', it\'s your turn.');
     } else {
         roundScore += dice;
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
+
     }
 });
