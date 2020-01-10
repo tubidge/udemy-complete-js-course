@@ -10,7 +10,7 @@ GAME RULES:
 */
 
 // Score keeping
-var scores, activePlayer, roundScore;
+var scores, activePlayer, roundScore, dice, prevRoll;
 
 init();
 
@@ -45,8 +45,14 @@ function init() {
 document.querySelector('.btn-roll').addEventListener('click', function () {
     console.log('Roll button was pressed!');
 
+    // NEW: Check for a current dice value. If present, assign it to prevRoll.
+    if (dice != undefined) {
+        prevRoll = dice;
+        console.log('Previous Roll: ' + prevRoll);
+    };
+
     // 1. Generate random number.
-    var dice = Math.floor(Math.random() * 6) + 1;
+    dice = Math.floor(Math.random() * 6) + 1;
     console.log('Dice roll: ' + dice);
 
     // 2. Display result.
