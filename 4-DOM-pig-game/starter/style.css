@@ -70,9 +70,6 @@ body {
     margin-bottom: 130px;
 }
 
-.player-score:hover {
-    font-weight: 300;
-}
 
 .active { background-color: #f7f7f7; }
 .active .player-name { font-weight: 300; }
@@ -123,6 +120,25 @@ button {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.winner-text {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #EB4D4D;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 40px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+    top: 403px;
+    display: none;
+    text-align: center;
+}
+
 button:hover { font-weight: 600; }
 button:hover i { margin-right: 20px; }
 
@@ -144,6 +160,7 @@ i {
 .btn-new { top: 45px;}
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
+
 
 .dice {
     position: absolute;
