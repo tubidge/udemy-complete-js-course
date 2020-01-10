@@ -94,3 +94,18 @@ function nextPlayer() {
 };
 
 document.querySelector('.btn-new').addEventListener('click', init);
+
+
+
+/*************
+ * Coding Challenge 6
+ Change the game to follow these rules:
+
+ 1. A player loses their TOTAL score if they roll two 6s in a row. After this happens,
+    it's the other player's turn.
+
+ 2. Add an input field to ask the players what score they want to play to.
+
+ 3. Add a second dice to the game. Same rules apply, if one 1 is rolled the turn is over,
+    if two 6s are rolled score is wiped and the turn is over.
+ */
