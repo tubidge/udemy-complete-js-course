@@ -10,18 +10,37 @@ GAME RULES:
 */
 
 // Score keeping
-var scores = [0, 0];
-var roundScore = 0;
-var activePlayer = 0;
+var scores, activePlayer, roundScore;
 
+init();
+
+function init() {
+    scores = [0, 0];
+    activePlayer = 0;
+    roundScore = 0;
+    document.querySelector('.dice').style.display = 'none';
+    document.querySelector('#current-0').textContent = roundScore;
+    document.querySelector('#current-1').textContent = roundScore;
+    document.querySelector('#score-0').textContent = scores[activePlayer];
+    document.querySelector('#score-1').textContent = scores[activePlayer];
+    document.querySelector('.btn-roll').style.display = 'block';
+    document.querySelector('.btn-hold').style.display = 'block';
+    document.querySelector('.winner-text').style.display = 'none';
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('active');
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.add('active');
+};
 
 // document.querySelector('#current-' + activePlayer).textContent = dice;
 // document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 
-var x = document.querySelector('#score-0').textContent;
-console.log(x);
+// var x = document.querySelector('#score-0').textContent;
+// console.log(x);
 
-document.querySelector('.dice').style.display = 'none';
+
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
     console.log('Roll button was pressed!');
@@ -72,4 +91,6 @@ function nextPlayer() {
     document.querySelector('.player-1-panel').classList.toggle('active');
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     roundScore = 0;
-}
+};
+
+document.querySelector('.btn-new').addEventListener('click', init);
