@@ -19,6 +19,7 @@ function init() {
     activePlayer = 0;
     roundScore = 0;
     prevRoll = 0;
+    dice = 0;
     document.querySelector('.dice').style.display = 'none';
     document.querySelector('#current-0').textContent = roundScore;
     document.querySelector('#current-1').textContent = roundScore;
@@ -49,8 +50,8 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     // NEW: Check for a current dice value. If present, assign it to prevRoll.
     if (dice != 0) {
         prevRoll = dice;
-        console.log('Previous Roll: ' + prevRoll);
     };
+    console.log('Previous Roll: ' + prevRoll);
 
     // 1. Generate random number.
     dice = Math.floor(Math.random() * 6) + 1;
@@ -100,7 +101,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
 
 function nextPlayer() {
     roundScore = 0;
-    prevRoll = 0;
+    dice = 0;
     document.getElementById('current-' + activePlayer).textContent = '0';
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
@@ -129,5 +130,5 @@ document.querySelector('.btn-new').addEventListener('click', init);
 
 //  WHERE I LEFT OFF:
 
-// Cannot get previous roll to reset to 0 when nextPlayer function triggers. 
+// Cannot get prevRoll to reset to 0 when nextPlayer function triggers. 
 // We don't want the previous player's roll to hang around.
