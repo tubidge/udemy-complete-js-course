@@ -18,6 +18,7 @@ function init() {
     scores = [0, 0];
     activePlayer = 0;
     roundScore = 0;
+    prevRoll = 0;
     document.querySelector('.dice').style.display = 'none';
     document.querySelector('#current-0').textContent = roundScore;
     document.querySelector('#current-1').textContent = roundScore;
@@ -43,17 +44,17 @@ function init() {
 
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
-    console.log('Roll button was pressed!');
+    // console.log('Roll button was pressed!');
 
     // NEW: Check for a current dice value. If present, assign it to prevRoll.
-    if (dice != undefined) {
+    if (dice != 0) {
         prevRoll = dice;
         console.log('Previous Roll: ' + prevRoll);
     };
 
     // 1. Generate random number.
     dice = Math.floor(Math.random() * 6) + 1;
-    console.log('Dice roll: ' + dice);
+    // console.log('Dice roll: ' + dice);
 
     // 2. Display result.
     var diceDOM = document.querySelector('.dice')
@@ -62,7 +63,13 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
 
 
     // 3. Update round score if roll !== 1.
+    // NEW: Remove player score if two 6s are rolled in a row.
     if (dice === 1) {
+        nextPlayer();
+    } else if (dice === 6 && prevRoll === 6) {
+        scores[activePlayer] = 0;
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+        document.getElementById('current-' + activePlayer).textContent = '0';
         nextPlayer();
     } else {
         roundScore += dice;
@@ -92,11 +99,12 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
 });
 
 function nextPlayer() {
+    roundScore = 0;
+    prevRoll = 0;
     document.getElementById('current-' + activePlayer).textContent = '0';
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-    roundScore = 0;
 };
 
 document.querySelector('.btn-new').addEventListener('click', init);
@@ -115,3 +123,11 @@ document.querySelector('.btn-new').addEventListener('click', init);
  3. Add a second dice to the game. Same rules apply, if one 1 is rolled the turn is over,
     if two 6s are rolled score is wiped and the turn is over.
  */
+
+
+
+
+//  WHERE I LEFT OFF:
+
+// Cannot get previous roll to reset to 0 when nextPlayer function triggers. 
+// We don't want the previous player's roll to hang around.
