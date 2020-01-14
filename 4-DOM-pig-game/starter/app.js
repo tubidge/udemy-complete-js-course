@@ -14,7 +14,9 @@ var scores, activePlayer, roundScore, dice, prevRoll;
 
 init();
 
+// Initialization function to reset scores, rolls, and UI
 function init() {
+    winScore = prompt('What score would you like to play to?');
     scores = [0, 0];
     activePlayer = 0;
     roundScore = 0;
@@ -34,6 +36,7 @@ function init() {
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
+    document.querySelector('.winning-score').textContent = 'Winning Score:  ' + winScore;
 };
 
 // document.querySelector('#current-' + activePlayer).textContent = dice;
@@ -43,19 +46,17 @@ function init() {
 // console.log(x);
 
 
-
+// Roll button functionality
 document.querySelector('.btn-roll').addEventListener('click', function () {
     // console.log('Roll button was pressed!');
 
     // NEW: Check for a current dice value. If present, assign it to prevRoll.
-    if (dice != 0) {
-        prevRoll = dice;
-    };
+    prevRoll = dice;
     console.log('Previous Roll: ' + prevRoll);
 
     // 1. Generate random number.
     dice = Math.floor(Math.random() * 6) + 1;
-    // console.log('Dice roll: ' + dice);
+    console.log('Dice roll: ' + dice);
 
     // 2. Display result.
     var diceDOM = document.querySelector('.dice')
@@ -69,8 +70,9 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         nextPlayer();
     } else if (dice === 6 && prevRoll === 6) {
         scores[activePlayer] = 0;
+        roundScore = 0;
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-        document.getElementById('current-' + activePlayer).textContent = '0';
+        document.getElementById('current-' + activePlayer).textContent = roundScore;
         nextPlayer();
     } else {
         roundScore += dice;
@@ -79,6 +81,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     }
 });
 
+// Hold button functionality
 document.querySelector('.btn-hold').addEventListener('click', function () {
     // 1. Add current score to player's global score.
     scores[activePlayer] += roundScore;
@@ -87,7 +90,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
     //3. Check if we have a winner.
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= winScore) {
         console.log('We have a winner!');
         document.querySelector('.btn-roll').style.display = 'none';
         document.querySelector('.btn-hold').style.display = 'none';
@@ -106,6 +109,7 @@ function nextPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    console.log('----------- Next player! ------------');
 };
 
 document.querySelector('.btn-new').addEventListener('click', init);
@@ -126,9 +130,6 @@ document.querySelector('.btn-new').addEventListener('click', init);
  */
 
 
-
-
-//  WHERE I LEFT OFF:
-
-// Cannot get prevRoll to reset to 0 when nextPlayer function triggers. 
-// We don't want the previous player's roll to hang around.
+//  Left off at: 
+// Validate number input for winning score.
+// Fix active player background color.

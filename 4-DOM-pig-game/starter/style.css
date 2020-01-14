@@ -173,3 +173,10 @@ i {
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.winning-score {
+    font-size: 20px;
+    padding: 10px 0px 0px 30px;
+    background: none;
+    background-color: #ffffff;
+}
