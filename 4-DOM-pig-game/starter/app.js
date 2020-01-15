@@ -16,12 +16,14 @@ init();
 
 // Initialization function to reset scores, rolls, and UI
 function init() {
-    winScore = prompt('What score would you like to play to?');
+
     scores = [0, 0];
     activePlayer = 0;
     roundScore = 0;
     prevRoll = 0;
     dice = 0;
+    winScore = parseInt(prompt('What score would you like to play to?'));
+
     document.querySelector('.dice').style.display = 'none';
     document.querySelector('#current-0').textContent = roundScore;
     document.querySelector('#current-1').textContent = roundScore;
@@ -37,6 +39,12 @@ function init() {
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
     document.querySelector('.winning-score').textContent = 'Winning Score:  ' + winScore;
+    if (isNaN(winScore)) {
+        alert('Input must be a number.');
+        init();
+    } else {
+        return;
+    }
 };
 
 // document.querySelector('#current-' + activePlayer).textContent = dice;
