@@ -139,5 +139,4 @@ document.querySelector('.btn-new').addEventListener('click', init);
 
 
 //  Left off at: 
-// Validate number input for winning score.
-// Fix active player background color.
+// #3
