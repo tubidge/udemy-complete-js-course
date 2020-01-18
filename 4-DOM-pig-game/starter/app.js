@@ -58,17 +58,18 @@ function init() {
 document.querySelector('.btn-roll').addEventListener('click', function () {
     // console.log('Roll button was pressed!');
 
-    // NEW: Check for a current dice value. If present, assign it to prevRoll.
-    prevRoll = dice;
-    console.log('Previous Roll: ' + prevRoll);
+    // NEW: Storing previous dice values to prevRoll variable.
+    prevRoll[0] = dice[0];
+    prevRoll[1] = dice[1];
 
-    // 1. Generate two random numbers.
+    // 1. Generate two random numbers, assign to dice array.
     function rand() {
         return Math.floor(Math.random() * 6) + 1;
     };
     dice[0] = rand();
     dice[1] = rand();
     console.log('Dice roll: ' + dice);
+    console.log('Previous Roll: ' + prevRoll);
 
 
     // 2. Display result to each die.
@@ -81,19 +82,40 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     diceDOM2.src = 'dice-' + dice[1] + '.png';
 
 
-
-    // 3. Update round score if roll !== 1.
+    // 3. Remove round score and switch players if either die = 1.
+    //    If two 6s are rolled in a row on either die, or if two 6s are rolled together,
+    //    remove round and player score then switch players.
+    //    Otherwise, update round score.
     // NEW: Remove player score if two 6s are rolled in a row.
-    if (dice === 1) {
-        nextPlayer();
-    } else if (dice === 6 && prevRoll === 6) {
+
+    if (dice[0] === 6 && dice[1] === 6) {
+        console.log('Double 6s! You lost your score.');
         scores[activePlayer] = 0;
         roundScore = 0;
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
         document.getElementById('current-' + activePlayer).textContent = roundScore;
         nextPlayer();
-    } else {
-        roundScore += dice;
+    } else if (dice[1] === 6 && prevRoll[1] === 6) {
+        console.log('Two 6s in a row! You lost your score.');
+        scores[activePlayer] = 0;
+        roundScore = 0;
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+        document.getElementById('current-' + activePlayer).textContent = roundScore;
+        nextPlayer();
+    } else if (dice[0] === 6 && prevRoll[0] === 6) {
+        console.log('Two 6s in a row! You lost your score.');
+        scores[activePlayer] = 0;
+        roundScore = 0;
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+        document.getElementById('current-' + activePlayer).textContent = roundScore;
+        nextPlayer();
+    } else if (dice[0] === 1 || dice[1] === 1) {
+        nextPlayer();
+    }
+    else {
+        // Create round score by adding both dice.
+        var rollScore = dice[0] + dice[1];
+        roundScore += rollScore;
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
 
     }
@@ -149,4 +171,4 @@ document.querySelector('.btn-new').addEventListener('click', init);
 
 
 //  Left off at: 
-// #3
+// Finished challenges, but change score input to html element.
