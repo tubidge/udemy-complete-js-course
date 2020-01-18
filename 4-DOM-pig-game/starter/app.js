@@ -172,3 +172,5 @@ document.querySelector('.btn-new').addEventListener('click', init);
 
 //  Left off at: 
 // Finished challenges, but change score input to html element.
+
+// Does dice need to be a global variable? It's value is eventually stored in a score.
