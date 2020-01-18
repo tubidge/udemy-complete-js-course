@@ -20,8 +20,8 @@ function init() {
     scores = [0, 0];
     activePlayer = 0;
     roundScore = 0;
-    prevRoll = 0;
-    dice = 0;
+    prevRoll = [0, 0];
+    dice = [0, 0];
     winScore = parseInt(prompt('What score would you like to play to?'));
 
     document.querySelector('.dice').style.display = 'none';
@@ -62,14 +62,24 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     prevRoll = dice;
     console.log('Previous Roll: ' + prevRoll);
 
-    // 1. Generate random number.
-    dice = Math.floor(Math.random() * 6) + 1;
+    // 1. Generate two random numbers.
+    function rand() {
+        return Math.floor(Math.random() * 6) + 1;
+    };
+    dice[0] = rand();
+    dice[1] = rand();
     console.log('Dice roll: ' + dice);
 
-    // 2. Display result.
-    var diceDOM = document.querySelector('.dice')
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
+
+    // 2. Display result to each die.
+    var diceDOM1 = document.querySelector('#dice1');
+    var diceDOM2 = document.querySelector('#dice2');
+
+    diceDOM1.style.display = 'block';
+    diceDOM2.style.display = 'block';
+    diceDOM1.src = 'dice-' + dice[0] + '.png';
+    diceDOM2.src = 'dice-' + dice[1] + '.png';
+
 
 
     // 3. Update round score if roll !== 1.
@@ -112,7 +122,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
 
 function nextPlayer() {
     roundScore = 0;
-    dice = 0;
+    dice = [0, 0];
     document.getElementById('current-' + activePlayer).textContent = '0';
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
