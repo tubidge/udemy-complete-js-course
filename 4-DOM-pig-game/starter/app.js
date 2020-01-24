@@ -20,9 +20,8 @@ function init() {
     scores = [0, 0];
     activePlayer = 0;
     roundScore = 0;
-    prevRoll = [0, 0];
     dice = [0, 0];
-    winScore = parseInt(prompt('What score would you like to play to?'));
+    prevRoll = [0, 0];
 
     document.querySelector('.dice').style.display = 'none';
     document.querySelector('#current-0').textContent = roundScore;
@@ -38,13 +37,6 @@ function init() {
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
-    document.querySelector('.winning-score').textContent = 'Winning Score:  ' + winScore;
-    if (isNaN(winScore)) {
-        alert('Input must be a number.');
-        init();
-    } else {
-        return;
-    }
 };
 
 // document.querySelector('#current-' + activePlayer).textContent = dice;
@@ -63,11 +55,8 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     prevRoll[1] = dice[1];
 
     // 1. Generate two random numbers, assign to dice array.
-    function rand() {
-        return Math.floor(Math.random() * 6) + 1;
-    };
-    dice[0] = rand();
-    dice[1] = rand();
+    dice[0] = Math.floor(Math.random() * 6) + 1;
+    dice[1] = Math.floor(Math.random() * 6) + 1;
     console.log('Dice roll: ' + dice);
     console.log('Previous Roll: ' + prevRoll);
 
@@ -121,6 +110,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     }
 });
 
+
 // Hold button functionality
 document.querySelector('.btn-hold').addEventListener('click', function () {
     // 1. Add current score to player's global score.
@@ -128,6 +118,15 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
 
     // 2. Update UI.
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+    // 2a Handling score input.
+    var input = document.querySelector('.score-input').value;
+
+    if (input) {
+        var winScore = input;
+    } else {
+        winScore = 100;
+    };
 
     //3. Check if we have a winner.
     if (scores[activePlayer] >= winScore) {
@@ -141,6 +140,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
         nextPlayer();
     }
 });
+
 
 function nextPlayer() {
     roundScore = 0;
