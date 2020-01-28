@@ -31,25 +31,64 @@
 
 
 
-// Object.create Method
+// // Object.create Method
 
-var personProto = {
-    calcAge: function () {
-        console.log(2020 - this.yearOfBirth);
+// var personProto = {
+//     calcAge: function () {
+//         console.log(2020 - this.yearOfBirth);
 
-    }
+//     }
+// };
+
+// var john = Object.create(personProto);
+// john.name = 'John';
+// john.yearOfBirth = 1988;
+// john.job = 'teacher';
+
+
+// var jane = Object.create(personProto, {
+//     name: { value: 'Jane' },
+//     yearOfBirth: { value: 1969 },
+//     job: { value: 'Artist' }
+// });
+
+// console.log(john.calcAge());
+
+
+
+// Objects vs. Primitives
+
+// Primitives
+var a = 432;
+var b = a;
+a = 32;
+console.log(a, b);
+
+// Objects
+var obj1 = {
+    name: 'name1',
+    age: 90
 };
 
-var john = Object.create(personProto);
-john.name = 'John';
-john.yearOfBirth = 1988;
-john.job = 'teacher';
+var obj2 = obj1;
+obj1.age = 30;
+obj2.age = 50;
+console.log(obj1);
+console.log(obj2);
 
+// Functions
+var age = 28;
+var phil = {
+    name: 'Phil',
+    city: 'Bluffdale'
+};
+console.log(age, phil);
 
-var jane = Object.create(personProto, {
-    name: { value: 'Jane' },
-    yearOfBirth: { value: 1969 },
-    job: { value: 'Artist' }
-});
+function change(a, b) {
+    a = 31;
+    b.city = 'Lehi'
+};
 
-console.log(john.calcAge());
+change(age, phil);
+
+console.log(age, phil);
