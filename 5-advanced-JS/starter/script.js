@@ -56,39 +56,106 @@
 
 
 
-// Objects vs. Primitives
+// // Objects vs. Primitives
 
-// Primitives
-var a = 432;
-var b = a;
-a = 32;
-console.log(a, b);
+// // Primitives
+// var a = 432;
+// var b = a;
+// a = 32;
+// console.log(a, b);
 
-// Objects
-var obj1 = {
-    name: 'name1',
-    age: 90
+// // Objects
+// var obj1 = {
+//     name: 'name1',
+//     age: 90
+// };
+
+// var obj2 = obj1;
+// obj1.age = 30;
+// obj2.age = 50;
+// console.log(obj1);
+// console.log(obj2);
+
+// // Functions
+// var age = 28;
+// var phil = {
+//     name: 'Phil',
+//     city: 'Bluffdale'
+// };
+// console.log(age, phil);
+
+// function change(a, b) {
+//     a = 31;
+//     b.city = 'Lehi'
+// };
+
+// change(age, phil);
+
+// console.log(age, phil);
+
+
+// // First Class Functions
+// // Passing Functions as Arguments
+
+// var years = [1988, 1985, 1995, 1960, 1958];
+
+// function calcAge(yob) {
+//     return 2020 - yob;
+// };
+
+// function isFullAge(age) {
+//     return age >= 21;
+// };
+
+// function maxHeartRate(age) {
+//     if (age >= 18 && age <= 81) {
+//         return Math.round(206.9 - (age * 0.67))
+//     } else {
+//         return -1;
+//     };
+// };
+
+// function arrayCalc(array, func) {
+//     var result = [];
+//     for (i = 0; i < array.length; i++) {
+//         result.push(func(array[i]));
+//     }
+//     return result;
+// };
+
+// var ages = arrayCalc(years, calcAge);
+// console.log(ages);
+
+// var fullAges = arrayCalc(ages, isFullAge);
+// console.log(fullAges);
+
+// var heartRates = arrayCalc(ages, maxHeartRate);
+// console.log(heartRates);
+
+// // Functions Returning Functions
+
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function (name) {
+            console.log(name + ', can you please explain what UX design is?')
+        }
+    } else if (job === 'teacher') {
+        return function (name) {
+            console.log(name + ', what subject do you teach?')
+        }
+    } else {
+        return function (name) {
+            console.log('Hello ' + name + ', what do you do?')
+        }
+    }
 };
 
-var obj2 = obj1;
-obj1.age = 30;
-obj2.age = 50;
-console.log(obj1);
-console.log(obj2);
+var teacherQuestion = interviewQuestion('contortionist');
+teacherQuestion('Phil');
 
-// Functions
-var age = 28;
-var phil = {
-    name: 'Phil',
-    city: 'Bluffdale'
-};
-console.log(age, phil);
+var designerQuestion = interviewQuestion('teacher');
+designerQuestion('Paul');
 
-function change(a, b) {
-    a = 31;
-    b.city = 'Lehi'
-};
+// OR
 
-change(age, phil);
-
-console.log(age, phil);
+interviewQuestion('designer')('Mark');
