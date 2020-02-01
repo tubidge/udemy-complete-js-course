@@ -227,23 +227,92 @@
 // -----------------------
 
 
-function interviewQuestion(job) {
-    var questions = {
-        designer: ', can you please explain what UX design is?',
-        teacher: ', what subject do you teach?',
-        other: ', what do you do?'
-    };
-    return function (name) {
-        if (job === 'designer') {
-            console.log(name + questions.designer);
-        } else if (job === 'teacher') {
-            console.log(name + questions.teacher);
-        } else {
-            console.log('Hello ' + name + questions.other);
-        }
+// function interviewQuestion(job) {
+//     var questions = {
+//         designer: ', can you please explain what UX design is?',
+//         teacher: ', what subject do you teach?',
+//         other: ', what do you do?'
+//     };
+//     return function (name) {
+//         if (job === 'designer') {
+//             console.log(name + questions.designer);
+//         } else if (job === 'teacher') {
+//             console.log(name + questions.teacher);
+//         } else {
+//             console.log('Hello ' + name + questions.other);
+//         }
+//     }
+// };
+
+
+// var designerQuestion = interviewQuestion('designer');
+// designerQuestion('Phil');
+
+// interviewQuestion('teacher')('John');
+// interviewQuestion('baller')('Lenny');
+
+
+// // BIND, CALL, and APPLY
+
+// var john = {
+//     name: 'John',
+//     age: 32,
+//     job: 'teacher',
+//     presentation: function (style, timeOfDay) {
+//         if (style === 'formal') {
+//             console.log('Hello sir, my name is ' + this.name + '. Lovely ' + timeOfDay + ', isn\'t it?');
+//         } else if (style === 'friendly') {
+//             console.log('Yo guys! I\'m ' + this.name + '. What are you doing this ' + timeOfDay + '?');
+//         }
+//     }
+// }
+
+// var emily = {
+//     name: 'Emily',
+//     age: 35,
+//     job: 'designer'
+// };
+
+// john.presentation('formal', 'morning');
+// john.presentation('friendly', 'afternoon');
+
+// // Call method
+// john.presentation.call(emily, 'friendly', 'evening');
+
+// // Apply method
+// // john.presentation.apply(emily, ['formal', 'afternoon']);
+
+// // Bind method
+// var johnFriendly = john.presentation.bind(john, 'friendly');
+// johnFriendly('night');
+
+// var emilyFormal = john.presentation.bind(emily, 'formal');
+// emilyFormal('afternoon');
+
+
+// // Rewrite calculate age function with bind:
+
+var years = [1988, 1985, 1995, 2003, 2009];
+
+
+function arrayCalc(array, func) {
+    var result = [];
+    for (i = 0; i < array.length; i++) {
+        result.push(func(array[i]));
     }
+    return result;
 };
 
+function calcAge(yob) {
+    return 2020 - yob;
+};
 
-var designerQuestion = interviewQuestion('designer');
-designerQuestion('Phil');
+function isFullAge(limit, age) {
+    return age >= limit;
+};
+
+var ages = arrayCalc(years, calcAge);
+console.log(ages);
+
+var fullAgesJapan = arrayCalc(ages, isFullAge.bind(this, 20));
+console.log(fullAgesJapan);
