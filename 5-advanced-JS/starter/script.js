@@ -164,21 +164,38 @@
 
 // // IIFE - Immediately Invoked Function Expressions
 
-// Normal function
-function game() {
-    var score = Math.random() * 10;
-    console.log(score >= 5);
-};
-game();
+// // Normal function
+// function game() {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5);
+// };
+// game();
 
-// IIFE
-(function () {
-    var score = Math.random() * 10;
-    console.log(score >= 5);
-})();
-// console.log(score);
+// // IIFE
+// (function () {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5);
+// })();
+// // console.log(score);
 
-(function (goodLuck) {
-    var score = Math.random() * 10;
-    console.log(score >= 5 - goodLuck);
-})(3);
+// (function (goodLuck) {
+//     var score = Math.random() * 10;
+//     console.log(score >= 5 - goodLuck);
+// })(3);
+
+
+
+// // CLOSURES
+
+function retirement(retirementAge) {
+    return function (yearOfBirth) {
+        var age = 2020 - yearOfBirth;
+        var text = ' years until retirement.';
+        console.log((retirementAge - age) + text);
+    }
+}
+
+var usaRetirment = retirement(66);
+usaRetirment(1988);
+var swedenRetirement = retirement(65);
+swedenRetirement(1960);
