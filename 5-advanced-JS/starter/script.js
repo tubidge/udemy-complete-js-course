@@ -153,12 +153,12 @@
 // var teacherQuestion = interviewQuestion('contortionist');
 // teacherQuestion('Phil');
 
-// var designerQuestion = interviewQuestion('teacher');
+// var designerQuestion = interviewQuestion('designer');
 // designerQuestion('Paul');
 
 // // OR
 
-// interviewQuestion('designer')('Mark');
+// interviewQuestion('teacher')('Mark');
 
 
 
@@ -187,15 +187,63 @@
 
 // // CLOSURES
 
-function retirement(retirementAge) {
-    return function (yearOfBirth) {
-        var age = 2020 - yearOfBirth;
-        var text = ' years until retirement.';
-        console.log((retirementAge - age) + text);
-    }
-}
+// function retirement(retirementAge) {
+//     var text = ' years until retirement.';
+//     return function (yearOfBirth) {
+//         var age = 2020 - yearOfBirth;
+//         console.log((retirementAge - age) + text);
+//     }
+// }
 
-var usaRetirment = retirement(66);
-usaRetirment(1988);
-var swedenRetirement = retirement(65);
-swedenRetirement(1960);
+// var usaRetirment = retirement(66);
+// usaRetirment(1988);
+// var swedenRetirement = retirement(65);
+// swedenRetirement(1960);
+
+
+
+// CODING CHALLENGE: Rewrite the Job Interview function using closures.
+
+// function interviewQuestion(job) {
+//     if (job === 'designer') {
+//         return function (name) {
+//             console.log(name + ', can you please explain what UX design is?')
+//         }
+//     } else if (job === 'teacher') {
+//         return function (name) {
+//             console.log(name + ', what subject do you teach?')
+//         }
+//     } else {
+//         return function (name) {
+//             console.log('Hello ' + name + ', what do you do?')
+//         }
+//     }
+// };
+
+// var teacherQuestion = interviewQuestion('teacher');
+// teacherQuestion('Phil');
+
+
+// -----------------------
+
+
+function interviewQuestion(job) {
+    var questions = {
+        designer: ', can you please explain what UX design is?',
+        teacher: ', what subject do you teach?',
+        other: ', what do you do?'
+    };
+    return function (name) {
+        if (job === 'designer') {
+            console.log(name + questions.designer);
+        } else if (job === 'teacher') {
+            console.log(name + questions.teacher);
+        } else {
+            console.log('Hello ' + name + questions.other);
+        }
+    }
+};
+
+
+var designerQuestion = interviewQuestion('designer');
+designerQuestion('Phil');
