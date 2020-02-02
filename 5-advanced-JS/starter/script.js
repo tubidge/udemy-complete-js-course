@@ -362,18 +362,28 @@ var quest4 = new Question('Who is going to win the Super Bowl?', ['A: 49ers', 'B
 
 var questions = [quest1, quest2, quest3, quest4];
 
-var randomQuestion = questions[Math.round(Math.random() * 3)];
+nextQuestion();
+// var randomQuestion = questions[Math.round(Math.random() * 3)];
 
-randomQuestion.display();
-var input = prompt('Please enter your answer:');
-checkAnswer();
+// randomQuestion.display();
+// var input = prompt('Please enter your answer:');
+// checkAnswer(input, randomQuestion);
 
-function checkAnswer() {
-    if (input === randomQuestion.correct[0] || input === randomQuestion.correct[1]) {
+function checkAnswer(answer, randomQuestion) {
+    if (answer === randomQuestion.correct[0] || answer === randomQuestion.correct[1]) {
         console.log('That\'s correct!');
     } else {
         console.log('Sorry, wrong answer!');
-    }
+    };
+    console.log('---------- Next Question ----------');
+    nextQuestion();
+};
+
+function nextQuestion() {
+    randomQuestion = questions[Math.round(Math.random() * 3)];
+    randomQuestion.display();
+    var input = prompt('Please enter your answer:');
+    checkAnswer(input, randomQuestion);
 };
 
 
