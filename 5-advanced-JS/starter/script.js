@@ -343,6 +343,8 @@ c) correct answer (I would use a number for this)
 7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 */
 
+
+// Create the structure of a question
 var Question = function (question, answers, correct) {
     this.question = question;
     this.answers = answers;
@@ -355,20 +357,44 @@ var Question = function (question, answers, correct) {
     }
 };
 
+// Construct new questions
 var quest1 = new Question('Where is Phil going to get a job?', ['A: Google', 'B: Adobe', 'C: Jiffy Lube'], ['B', 'b']);
 var quest2 = new Question('What day of the week is Valentine\'s Day this year?', ['A: Monday', 'B: Friday', 'C: Saturday'], ['B', 'b']);
 var quest3 = new Question('Who was Phil\'s #1 artist of 2019?', ['A: Opiuo', 'B: CBDB', 'C: Griz'], ['C', 'c']);
 var quest4 = new Question('Who is going to win the Super Bowl?', ['A: 49ers', 'B: Chiefs'], ['A', 'a']);
 
+// Put questions in an array
 var questions = [quest1, quest2, quest3, quest4];
+var randomQuestion;
 
-nextQuestion();
+
+
 // var randomQuestion = questions[Math.round(Math.random() * 3)];
 
 // randomQuestion.display();
 // var input = prompt('Please enter your answer:');
 // checkAnswer(input, randomQuestion);
 
+
+// Function to select a random question, then run it's display method 
+function nextQuestion(callback) {
+    randomQuestion = questions[Math.round(Math.random() * 3)];
+    randomQuestion.display();
+    callback(randomQuestion, checkAnswer);
+};
+
+console.log('before');
+nextQuestion(promptAnswer);
+
+// Function to prompt the user for an answer, then call a function to check it
+function promptAnswer(randomQuestion, callback) {
+    var input = prompt('Please enter your answer:');
+    console.log(input);
+    callback(input, randomQuestion)
+};
+
+
+// Function to check the user's answer
 function checkAnswer(answer, randomQuestion) {
     if (answer === randomQuestion.correct[0] || answer === randomQuestion.correct[1]) {
         console.log('That\'s correct!');
@@ -376,15 +402,9 @@ function checkAnswer(answer, randomQuestion) {
         console.log('Sorry, wrong answer!');
     };
     console.log('---------- Next Question ----------');
-    nextQuestion();
+    nextQuestion(promptAnswer);
 };
 
-function nextQuestion() {
-    randomQuestion = questions[Math.round(Math.random() * 3)];
-    randomQuestion.display();
-    var input = prompt('Please enter your answer:');
-    checkAnswer(input, randomQuestion);
-};
 
 
 /*
