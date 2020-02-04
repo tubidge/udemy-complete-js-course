@@ -29,12 +29,26 @@ c) correct answer (I would use a number for this)
         this.question = question;
         this.answers = answers;
         this.correct = correct;
-        this.display = function () {
-            console.log(this.question);
-            for (i = 0; i < this.answers.length; i++) {
-                console.log(answers[i]);
-            }
+    };
+
+    // Method to display question and answer
+    Question.prototype.display = function () {
+        console.log(this.question);
+        for (i = 0; i < this.answers.length; i++) {
+            console.log(this.answers[i]);
         }
+    };
+
+    // Method to check the user's answer
+    Question.prototype.checkAnswer = function (answer) {
+        if (answer === this.correct[0] || answer === this.correct[1]) {
+            console.log('That\'s correct!');
+            score++;
+            console.log('Score: ' + score);
+        } else {
+            console.log('Sorry, wrong answer!');
+        };
+        console.log('---------- Next Question ----------');
     };
 
     // Construct new questions
@@ -46,23 +60,20 @@ c) correct answer (I would use a number for this)
     // Put questions in an array
     var questions = [quest1, quest2, quest3, quest4];
 
-    var randomQuestion = questions[Math.round(Math.random() * 3)];
+    var score = 0;
 
-    randomQuestion.display();
+    function nextQuestion() {
+        var rN = Math.floor(Math.random() * questions.length);
+        questions[rN].display();
 
-    var input = prompt('Please enter your answer:');
+        var input = prompt('Please enter your answer:');
 
-    checkAnswer(input, randomQuestion);
-
-    // Function to check the user's answer
-    function checkAnswer(answer, randomQuestion) {
-        if (answer === randomQuestion.correct[0] || answer === randomQuestion.correct[1]) {
-            console.log('That\'s correct!');
-        } else {
-            console.log('Sorry, wrong answer!');
+        if (input !== 'exit') {
+            questions[rN].checkAnswer(input);
+            nextQuestion();
         };
-        console.log('---------- Next Question ----------');
     };
+    nextQuestion();
 })();
 
 
