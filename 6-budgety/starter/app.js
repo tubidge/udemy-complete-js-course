@@ -6,7 +6,7 @@ var budgetController = (function () {
 
     return {
         publicTest: function (b) {
-            console.log(add(b));
+            return (add(b));
         }
     };
 })();
@@ -18,7 +18,13 @@ var uiController = (function () {
 })();
 
 
-var controller = (function () {
+var controller = (function (budgeCtrl, uiCtrl) {
+    var z = budgeCtrl.publicTest(7);
 
+    return {
+        publicMethod: function () {
+            console.log(z);
+        }
+    }
 
-})();
+})(budgetController, uiController);
