@@ -68,7 +68,7 @@ c) correct answer (I would use a number for this)
 
         var input = prompt('Please enter your answer:');
 
-        if (input !== 'exit' && input !== 'Exit') {
+        if (input !== null) {
             questions[rN].checkAnswer(input);
             nextQuestion();
         };
