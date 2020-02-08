@@ -12,9 +12,32 @@ var budgetController = (function () {
         this.value = value
     };
 
-    return {
+    var budgetData = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+        totals: {
+            exp: 0,
+            inc: 0
+        }
+    };
 
-    }
+    return {
+        addItem: function (type, description, val) {
+            var newItem, ID;
+            ID = data.allItems[type][data.allItems[type].length - 1];
+
+            if (type === 'exp') {
+                newItem = new Expense(ID, description, val);
+            } else {
+                newItem = new Income(ID, description, val);
+            }
+
+            data.allItems[type].push(newItem);
+            return newItem;
+        }
+    };
 
 })();
 
